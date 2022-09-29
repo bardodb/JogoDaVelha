@@ -14,7 +14,7 @@ public class JogoDaVelha {
         String nome2 = sc.nextLine();
 
         boolean ganhou = false;
-        while (ganhou == false) {
+        while (!ganhou) {
             System.out.println("Vez da " + nome1);
             System.out.println("Digite a linha: ");
             linha = sc.nextInt();
@@ -32,7 +32,9 @@ public class JogoDaVelha {
                     System.out.print(jogo[i][j] + "|");
                 }
                 System.out.println();
+
             }
+
 
             if (jogo[0][0] == 1 && jogo[0][1] == 1 && jogo[0][2] == 1) {
                 ganhou = true;
@@ -64,7 +66,7 @@ public class JogoDaVelha {
                 System.out.println("Deu velha!");
             }
 
-            if (ganhou == false) {
+            if (!ganhou) {
                 System.out.println("Vez do jogador 2");
                 System.out.println("Digite a linha: ");
                 linha = sc.nextInt();
@@ -108,11 +110,10 @@ public class JogoDaVelha {
                     System.out.println("A jogador" + nome2 + "ganhou!");
                 }
 
+
             }
 
         }
 
     }
-
 }
-
