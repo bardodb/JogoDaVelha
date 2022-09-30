@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
+
 public class JogoDaVelha {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         int[][] jogo = new int[3][3];
         int jogador1 = 1;
         int jogador2 = 2;
