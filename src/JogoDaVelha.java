@@ -6,15 +6,7 @@ public class JogoDaVelha {
         char[] simbolos = {'X', 'O'};
         int posicao = 0;
         boolean ganhou = false;
-        String tab = "     |     |      \n" +
-                     "  1  |  2  |  3   \n" +
-                     "_____|_____|_____ \n" +
-                     "     |     |      \n" +
-                     "  4  |  5  |  6   \n" +
-                     "_____|_____|_____ \n" +
-                     "     |     |      \n" +
-                     "  7  |  8  |  9   \n" +
-                     "     |     |      " ;
+        String tab = Tabuleiro();
         Scanner leitor = new Scanner(System.in);
 
         String[] jogadores = inicializa(tab);
@@ -28,20 +20,13 @@ public class JogoDaVelha {
 
 
         while (!ganhou) {
-//            for (String jogador : jogadores) {
-//                for (char simbolo : simbolos) {
-//                    System.out.println("Vez da " + jogador + "");
-//                    posicao = Jogador.getJogadas(leitor);
-//                    tab = Tabuleiro(tab, posicao, simbolo);
-//
-//                }
-//            }
+
             for (int i = 0; i < jogadores.length ; i++) {
                 String jogador = jogadores[i];
                 char simbolo = simbolos[i];
                 System.out.println("Vez da " + jogador);
                 posicao = Jogador.getJogadas(leitor);
-                tab = Tabuleiro(tab, posicao, simbolo);
+                tab = MudaTabuleiro(tab, posicao, simbolo);
                 System.out.println(tab);
 
 
@@ -106,7 +91,7 @@ public class JogoDaVelha {
         }
     }
 
-    private static String Tabuleiro(String tab, int posicao, char jogador) {
+    private static String MudaTabuleiro(String tab, int posicao, char jogador) {
 
         switch (posicao){
             case 1: tab = tab.replace('1', jogador);
@@ -149,6 +134,19 @@ public class JogoDaVelha {
         System.out.println(tab);
 
         return lista;
+    }
+    
+    private static String Tabuleiro(){
+        String tab = "     |     |      \n" +
+                     "  1  |  2  |  3   \n" +
+                     "_____|_____|_____ \n" +
+                     "     |     |      \n" +
+                     "  4  |  5  |  6   \n" +
+                     "_____|_____|_____ \n" +
+                     "     |     |      \n" +
+                     "  7  |  8  |  9   \n" +
+                     "     |     |      " ;
+        return tab;
     }
 
 }
