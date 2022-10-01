@@ -3,34 +3,48 @@ import java.util.Scanner;
 
 public class JogoDaVelha {
     public static void main(String[] args) {
-        char[] simbolos = {'x', 'o'};
+        char[] simbolos = {'X', 'O'};
         int posicao = 0;
         boolean ganhou = false;
-        String tab = "     |     |     |\n" +
-                     "  1  |  2  |  3  |\n" +
-                     "_____|_____|_____|\n" +
-                     "     |     |     |\n" +
-                     "  4  |  5  |  6  |\n" +
-                     "_____|_____|_____|\n" +
-                     "     |     |     |\n" +
-                     "  7  |  8  |  9  |\n" +
-                     "     |     |     |" ;
+        String tab = "     |     |      \n" +
+                     "  1  |  2  |  3   \n" +
+                     "_____|_____|_____ \n" +
+                     "     |     |      \n" +
+                     "  4  |  5  |  6   \n" +
+                     "_____|_____|_____ \n" +
+                     "     |     |      \n" +
+                     "  7  |  8  |  9   \n" +
+                     "     |     |      " ;
         Scanner leitor = new Scanner(System.in);
 
-        String[] jogadores = inicializa();
+        String[] jogadores = inicializa(tab);
+        for (int i = 0; i < jogadores.length ; i++) {
+            String jogador = jogadores[i];
+            char simbolo = simbolos[i];
 
+                System.out.println("O jogador " + jogador + " é o " +  simbolo);
+
+        }
 
 
         while (!ganhou) {
-            for (String jogador : jogadores) {
-                for (char simbolo : simbolos) {
-                    System.out.println("Vez da " + jogador);
-                    System.out.println(tab);
-                    posicao = Jogador.getJogadas(leitor);
-                    tab = Tabuleiro(tab, posicao, simbolo);
+//            for (String jogador : jogadores) {
+//                for (char simbolo : simbolos) {
+//                    System.out.println("Vez da " + jogador + "");
+//                    posicao = Jogador.getJogadas(leitor);
+//                    tab = Tabuleiro(tab, posicao, simbolo);
+//
+//                }
+//            }
+            for (int i = 0; i < jogadores.length ; i++) {
+                String jogador = jogadores[i];
+                char simbolo = simbolos[i];
+                System.out.println("Vez da " + jogador);
+                posicao = Jogador.getJogadas(leitor);
+                tab = Tabuleiro(tab, posicao, simbolo);
+                System.out.println(tab);
 
 
-                }
             }
 
 
@@ -93,6 +107,7 @@ public class JogoDaVelha {
     }
 
     private static String Tabuleiro(String tab, int posicao, char jogador) {
+
         switch (posicao){
             case 1: tab = tab.replace('1', jogador);
                 break;
@@ -120,7 +135,7 @@ public class JogoDaVelha {
         return tab;
     }
 
-    private static String[] inicializa(){
+    private static String[] inicializa(String tab){
         System.out.println("|-----------------------------------------------------|");
         System.out.println("|--------------------JOGO DA VELHA--------------------|");
         System.out.println("|-----------------------------------------------------|");
@@ -131,6 +146,7 @@ public class JogoDaVelha {
         System.out.println("Digite o nome do jogador 2: ");
         String nome2 = sc.nextLine();
         String[] lista = {nome1, nome2};
+        System.out.println(tab);
 
         return lista;
     }
