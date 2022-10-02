@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Arrays;
+import java.lang.Character;
 
 
 public class JogoDaVelha {
@@ -8,6 +10,9 @@ public class JogoDaVelha {
         boolean ganhou = false;
         String tab = Tabuleiro();
         Scanner leitor = new Scanner(System.in);
+        char[] arrayTab;
+
+
 
         String[] jogadores = inicializa(tab);
         for (int i = 0; i < jogadores.length ; i++) {
@@ -27,72 +32,26 @@ public class JogoDaVelha {
                 System.out.println("Vez da " + jogador);
                 posicao = Jogador.getJogadas(leitor);
                 tab = MudaTabuleiro(tab, posicao, simbolo);
+                arrayTab = tabToArray(tab);
+                ganhou = Ganhou(arrayTab, jogador);
+                    if (ganhou == true){
+                        System.out.println("Quer jogar outra partida? s/n");
+                        char resposta = leitor.next().charAt(0);
+                            if(resposta == 's'){
+                                System.out.println("|---------------Iniciando outra partida--------------|");
+                                tab = Tabuleiro();
+                            } else {
+                                System.out.println("|---------------Encerrando Jogo--------------|");
+                                break;
+                            }
+                    }
                 System.out.println(tab);
 
-
             }
-
-
-//            if (jogo[0][0] == 1 && jogo[0][1] == 1 && jogo[0][2] == 1) {
-//                ganhou = true;
-//                System.out.println("Jogadora " + nome1 + " ganhou!");
-//            } else if (jogo[1][0] == 1 && jogo[1][1] == 1 && jogo[1][2] == 1) {
-//                ganhou = true;
-//                System.out.println("Jogadora " + nome1 + " ganhou!");
-//            } else if (jogo[2][0] == 1 && jogo[2][1] == 1 && jogo[2][2] == 1) {
-//                ganhou = true;
-//                System.out.println("Jogadora " + nome1 + " ganhou!");
-//            } else if (jogo[0][0] == 1 && jogo[1][0] == 1 && jogo[2][0] == 1) {
-//                ganhou = true;
-//                System.out.println("Jogadora " + nome1 + " ganhou!");
-//            } else if (jogo[0][1] == 1 && jogo[1][1] == 1 && jogo[2][1] == 1) {
-//                ganhou = true;
-//                System.out.println("Jogadora " + nome1 + " ganhou!");
-//            } else if (jogo[0][2] == 1 && jogo[1][2] == 1 && jogo[2][2] == 1) {
-//                ganhou = true;
-//                System.out.println("Jogadora " + nome1 + " ganhou!");
-//            } else if (jogo[0][0] == 1 && jogo[1][1] == 1 && jogo[2][2] == 1) {
-//                ganhou = true;
-//                System.out.println("Jogadora " + nome1 + " ganhou!");
-//            } else if (jogo[0][2] == 1 && jogo[1][1] == 1 && jogo[2][0] == 1) {
-//                ganhou = true;
-//                System.out.println("Jogadora " + nome1 + " ganhou!");
-//            }
-
-//            if (!ganhou) {
-//                System.out.println("Vez do jogador 2");
-//                jogadas = Jogador.getJogadas(sc, jogo, jogador2, jogadas);
-//                if (jogo[0][0] == 2 && jogo[0][1] == 2 && jogo[0][2] == 2) {
-//                    ganhou = true;
-//                    System.out.println("A jogadora" + nome2 + "ganhou!");
-//                } else if (jogo[1][0] == 2 && jogo[1][1] == 2 && jogo[1][2] == 2) {
-//                    ganhou = true;
-//                    System.out.println("A jogadora" + nome2 + "ganhou!");
-//                } else if (jogo[2][0] == 2 && jogo[2][1] == 2 && jogo[2][2] == 2) {
-//                    ganhou = true;
-//                    System.out.println("A jogadora" + nome2 + "ganhou!");
-//                } else if (jogo[0][0] == 2 && jogo[1][0] == 2 && jogo[2][0] == 2) {
-//                    ganhou = true;
-//                    System.out.println("A jogador" + nome2 + "ganhou!");
-//                } else if (jogo[0][1] == 2 && jogo[1][1] == 2 && jogo[2][1] == 2) {
-//                    ganhou = true;
-//                    System.out.println("A jogador" + nome2 + "ganhou!");
-//                } else if (jogo[0][2] == 2 && jogo[1][2] == 2 && jogo[2][2] == 2) {
-//                    ganhou = true;
-//                    System.out.println("A jogador" + nome2 + "ganhou!");
-//                } else if (jogo[0][0] == 2 && jogo[1][1] == 2 && jogo[2][2] == 2) {
-//                    ganhou = true;
-//                    System.out.println("A jogador" + nome2 + "ganhou!");
-//                } else if (jogo[0][2] == 2 && jogo[1][1] == 2 && jogo[2][0] == 2) {
-//                    ganhou = true;
-//                    System.out.println("A jogador" + nome2 + "ganhou!");
-//                }
-//            }
         }
-    }
+ }
 
     private static String MudaTabuleiro(String tab, int posicao, char jogador) {
-
         switch (posicao){
             case 1: tab = tab.replace('1', jogador);
                 break;
@@ -116,7 +75,6 @@ public class JogoDaVelha {
             default:
                 System.out.println("posição não existe");
         }
-
         return tab;
     }
 
@@ -134,6 +92,30 @@ public class JogoDaVelha {
         System.out.println(tab);
 
         return lista;
+    }
+
+    private static boolean Ganhou (char[] tabJogadas, String jogador){
+        boolean ganhou;
+        if (tabJogadas[0] == tabJogadas [1] && tabJogadas [1] == tabJogadas[2] ||
+                tabJogadas[3] == tabJogadas [4] && tabJogadas [4] == tabJogadas[5] ||
+                tabJogadas[6] == tabJogadas [7] && tabJogadas [7] == tabJogadas[8] ||
+                tabJogadas[0] == tabJogadas [3] && tabJogadas [3] == tabJogadas[6] ||
+                tabJogadas[1] == tabJogadas [4] && tabJogadas [4] == tabJogadas[7] ||
+                tabJogadas[2] == tabJogadas [5] && tabJogadas [5] == tabJogadas[8] ||
+                tabJogadas[0] == tabJogadas [4] && tabJogadas [4] == tabJogadas[8] ||
+                tabJogadas[2] == tabJogadas [4] && tabJogadas [4] == tabJogadas[6]){
+            System.out.println("Parabéeennss " +jogador+ " vc ganhou");
+            ganhou = true;
+        } else {
+            ganhou = false;
+        }
+        return ganhou;
+    }
+
+    private static char[] tabToArray(String tab){
+        char[] tabuleiro = tab.toCharArray();
+        char[] tabJogadas = {tabuleiro[21], tabuleiro[27],tabuleiro[33], tabuleiro[78], tabuleiro[84], tabuleiro[90], tabuleiro[135], tabuleiro[141], tabuleiro[147]};
+        return tabJogadas;
     }
     
     private static String Tabuleiro(){
