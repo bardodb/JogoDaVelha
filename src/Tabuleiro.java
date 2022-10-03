@@ -1,4 +1,8 @@
 public class Tabuleiro {
+    private static String tab;
+    private static int posicao;
+    private static char jogador;
+
     public static String tabuleiro(){
         String tab = "     |     |      \n" +
                 "  1  |  2  |  3   \n" +
@@ -13,6 +17,9 @@ public class Tabuleiro {
     }
 
     public static String mudaTabuleiro(String tab, int posicao, char jogador) {
+        Tabuleiro.tab = tab;
+        Tabuleiro.posicao = posicao;
+        Tabuleiro.jogador = jogador;
         switch (posicao){
             case 1: tab = tab.replace('1', jogador);
                 break;
@@ -41,8 +48,7 @@ public class Tabuleiro {
 
     public static char[] tabToArray(String tab){
         char[] tabuleiro = tab.toCharArray();
-        char[] tabJogadas = {tabuleiro[21], tabuleiro[27],tabuleiro[33], tabuleiro[78], tabuleiro[84], tabuleiro[90], tabuleiro[135], tabuleiro[141], tabuleiro[147]};
-        return tabJogadas;
+        return new char[]{tabuleiro[21], tabuleiro[27],tabuleiro[33], tabuleiro[78], tabuleiro[84], tabuleiro[90], tabuleiro[135], tabuleiro[141], tabuleiro[147]};
     }
 
 }

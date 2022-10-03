@@ -16,19 +16,19 @@ public class Jogador {
     public static int getJogadas(Scanner sc) {
             System.out.println("Digite a posição: ");
             int posicaoEscolhida = sc.nextInt();
-
             return posicaoEscolhida;
     }
 
-    public static void mostraJogaroes(String[] jogadores, char[] simbolos){
+    public static void mostraJogardores(String[] jogadores, char[] simbolos){
         for (int i = 0; i < jogadores.length; i++) {
             String jogador = jogadores[i];
             char simbolo = simbolos[i];
 
             System.out.println("O jogador " + jogador + " é o " + simbolo);
+        }
+
 
         }
+
     }
 
-
-}
