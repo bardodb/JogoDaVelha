@@ -11,6 +11,7 @@ public class JogoDaVelha {
         Scanner leitor = new Scanner(System.in);
         char[] arrayTab;
         int n = 0;
+        int j;
 
         inicializa();
 
@@ -32,6 +33,13 @@ public class JogoDaVelha {
                 char simbolo = simbolos[i];
                 System.out.println("Vez da " + jogador);
                 posicao = Jogador.getJogadas(leitor);
+                arrayTab = Tabuleiro.tabToArray(tab);
+                j = posicao -1;
+                while (arrayTab[j] == 'X' || arrayTab[j] == 'O') {
+                    System.out.println("Posição já selecionada, tente outra");
+                    posicao = Jogador.getJogadas(leitor);
+                    j = posicao -1;
+                }
                 tab = Tabuleiro.mudaTabuleiro(tab, posicao, simbolo);
                 arrayTab = Tabuleiro.tabToArray(tab);
                 ganhou = Ganhou(arrayTab, jogador, tab);
