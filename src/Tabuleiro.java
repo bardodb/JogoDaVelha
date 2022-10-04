@@ -20,6 +20,7 @@ public class Tabuleiro {
         Tabuleiro.tab = tab;
         Tabuleiro.posicao = posicao;
         Tabuleiro.jogador = jogador;
+
         switch (posicao){
             case 1: tab = tab.replace('1', jogador);
                 break;
