@@ -15,8 +15,17 @@ public class Jogador {
 
     public static int getJogadas(Scanner sc) {
             System.out.println("Digite a posição: ");
-            return sc.nextInt();
+            if (sc.hasNextInt()) {
+                return sc.nextInt();
+            }
+            else {
+                System.out.println("somente números são aceitos");
+                sc.next();
+                return getJogadas(sc);
+            }
+
     }
+
 
     public static void mostraJogardores(String[] jogadores, char[] simbolos){
         for (int i = 0; i < jogadores.length; i++) {
@@ -27,7 +36,7 @@ public class Jogador {
         }
 
 
-        }
-
     }
+
+}
 

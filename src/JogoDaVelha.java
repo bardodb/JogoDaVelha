@@ -37,10 +37,13 @@ public class JogoDaVelha {
                 arrayTab = Tabuleiro.tabToArray(tab);
                 ganhou = Ganhou.ganhou(arrayTab, jogador, tab);
 
+
                     if (ganhou) {
                         System.out.println("Quer jogar outra partida? s/n");
                         char resposta = leitor.next().charAt(0);
-                        if (Character.toLowerCase(resposta)== 's') {
+                        if (Character.toLowerCase(resposta)== 's')
+
+                        {
                         System.out.println("|---------------Iniciando outra partida----------------|" );
 
                         Jogador.mostraJogardores(jogadores, simbolos);
@@ -48,8 +51,10 @@ public class JogoDaVelha {
                         n = 0;
                         ganhou = false;
                         break;
+
                         }
-                        else if (Character.toLowerCase(resposta)== 'n') {
+                        else if (Character.toLowerCase(resposta)== 'n')
+                        {
                             System.out.println("|---------------Encerrando Jogo--------------|");
                             break;
                         }
@@ -63,6 +68,7 @@ public class JogoDaVelha {
                         if (Character.toLowerCase(resposta)== 's') {
                             Jogador.mostraJogardores(jogadores, simbolos);
                             tab = Tabuleiro.tabuleiro();
+
                             System.out.println("|---------------Iniciando outra partida--------------|");
                             n = 0;
 

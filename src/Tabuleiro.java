@@ -40,9 +40,9 @@ public class Tabuleiro {
                 break;
             case 9: tab = tab.replace('9', jogador);
                 break;
-            case 0: break;
-            default:
-                System.out.println("posição não existe");
+            default: Exception e = new Exception("Posição inválida");
+                System.out.println(e.getMessage());
+
         }
         return tab;
     }

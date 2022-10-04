@@ -1,4 +1,5 @@
-public class Ganhou { public static boolean ganhou(char[] tabJogadas, String jogador, String tab) {
+public class Ganhou
+{ public static boolean ganhou(char[] tabJogadas, String jogador, String tab) {
     boolean ganhou;
     if (tabJogadas[0] == tabJogadas[1] && tabJogadas[1] == tabJogadas[2] ||
             tabJogadas[3] == tabJogadas[4] && tabJogadas[4] == tabJogadas[5] ||
@@ -9,6 +10,8 @@ public class Ganhou { public static boolean ganhou(char[] tabJogadas, String jog
             tabJogadas[0] == tabJogadas[4] && tabJogadas[4] == tabJogadas[8] ||
             tabJogadas[2] == tabJogadas[4] && tabJogadas[4] == tabJogadas[6]) {
         System.out.println(tab);
+
+
         System.out.println("Parabéeennss " + jogador + " vc ganhou");
         ganhou = true;
     } else {
