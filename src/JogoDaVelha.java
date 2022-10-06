@@ -5,6 +5,7 @@ public class JogoDaVelha {
     public static void main(String[] args) {
         char[] simbolos = {'X', 'O'};
         int posicao = 0;
+        int[] pontos = {0, 0};
         boolean ganhou = false;
         String tab = Tabuleiro.tabuleiro();
         Scanner leitor = new Scanner(System.in);
@@ -39,6 +40,7 @@ public class JogoDaVelha {
 
 
                     if (ganhou) {
+                        pontos = Ganhou.placar(ganhou, jogadores, pontos, i);
                         System.out.println("Quer jogar outra partida? s/n");
                         char resposta = leitor.next().charAt(0);
                         if (Character.toLowerCase(resposta)== 's')
@@ -92,4 +94,6 @@ public class JogoDaVelha {
         System.out.println("|-----------------------------------------------------|");
 
     }
+
+
 }
