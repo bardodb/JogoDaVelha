@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Jogador {
 
+    private static String tab;
+
     public static String[] getJogador(Scanner leitor, String tab){
         System.out.println("Digite o nome do jogador 1: ");
         String nome1 = leitor.nextLine();
@@ -13,15 +15,17 @@ public class Jogador {
         return lista;
     }
 
-    public static int getJogadas(Scanner sc) {
-            System.out.println("Digite a posição: ");
+    public static int getJogadas(Scanner sc, String tab) {
+
+        Jogador.tab = tab;
+        System.out.println("Digite a posição: ");
             if (sc.hasNextInt()) {
                 return sc.nextInt();
             }
             else {
-                System.out.println("somente números são aceitos");
+                System.out.println("Digite um número");
                 sc.next();
-                return getJogadas(sc);
+                return getJogadas(sc, tab);
             }
 
     }
@@ -34,6 +38,7 @@ public class Jogador {
 
             System.out.println("O jogador " + jogador + " é o " + simbolo);
         }
+
 
 
     }

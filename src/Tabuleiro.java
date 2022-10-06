@@ -1,7 +1,4 @@
 public class Tabuleiro {
-    private static String tab;
-    private static int posicao;
-    private static char jogador;
 
     public static String tabuleiro(){
         String tab = "     |     |      \n" +
@@ -16,10 +13,8 @@ public class Tabuleiro {
         return tab;
     }
 
+
     public static String mudaTabuleiro(String tab, int posicao, char jogador) {
-        Tabuleiro.tab = tab;
-        Tabuleiro.posicao = posicao;
-        Tabuleiro.jogador = jogador;
 
         switch (posicao){
             case 1: tab = tab.replace('1', jogador);
@@ -40,9 +35,7 @@ public class Tabuleiro {
                 break;
             case 9: tab = tab.replace('9', jogador);
                 break;
-            default: Exception e = new Exception("Posição inválida");
-                System.out.println(e.getMessage());
-
+            default: System.out.println("Posição inválida");
         }
         return tab;
     }

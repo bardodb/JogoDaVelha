@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.lang.Character;
 
 public class JogoDaVelha {
     public static void main(String[] args) {
@@ -23,14 +22,24 @@ public class JogoDaVelha {
                 String jogador = jogadores[i];
                 char simbolo = simbolos[i];
                 System.out.println("Vez da " + jogador);
-                posicao = Jogador.getJogadas(leitor);
+                posicao = Jogador.getJogadas(leitor, tab);
                 arrayTab = Tabuleiro.tabToArray(tab);
+
+
+
+                if (posicao > 9 || posicao < 1) {
+                    System.out.println("O jogo só aceita números entre 1 e 9");
+                    i--;
+
+                    continue;
+                }
 
                 j = posicao -1;
                 while (arrayTab[j] == 'X' || arrayTab[j] == 'O') {
                     System.out.println("Posição já selecionada, tente outra");
-                    posicao = Jogador.getJogadas(leitor);
+                    posicao = Jogador.getJogadas(leitor, tab);
                     j = posicao -1;
+
                 }
 
                 tab = Tabuleiro.mudaTabuleiro(tab, posicao, simbolo);
@@ -59,6 +68,7 @@ public class JogoDaVelha {
                             break;
                         }
 
+
                     }
                     if (n == 10) {
                         System.out.println(tab);
@@ -68,7 +78,6 @@ public class JogoDaVelha {
                         if (Character.toLowerCase(resposta)== 's') {
                             Jogador.mostraJogardores(jogadores, simbolos);
                             tab = Tabuleiro.tabuleiro();
-
                             System.out.println("|---------------Iniciando outra partida--------------|");
                             n = 0;
 
