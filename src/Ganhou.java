@@ -25,6 +25,9 @@ public class Ganhou{
             pontos[i]++;
             System.out.println("|---------------------PLACAR:------------------------|");
             System.out.println("|               " + jogadores[0] + ": "+ pontos[0] + " vs " + jogadores[1] +": "+ pontos[1] + "            |");
+        } else {
+            System.out.println("|---------------------PLACAR:------------------------|");
+            System.out.println("|               " + jogadores[0] + ": "+ pontos[0] + " vs " + jogadores[1] +": "+ pontos[1] + "            |");
         }
         return pontos;
     }

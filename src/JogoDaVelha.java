@@ -65,6 +65,7 @@ public class JogoDaVelha {
                     if (n == 10) {
                         System.out.println(tab);
                         System.out.println("Deu velhaa!!");
+                        Ganhou.placar(ganhou, jogadores, pontos, i);
                         System.out.println("Quer jogar outra partida? s/n");
                         char resposta = leitor.next().charAt(0);
                         if (Character.toLowerCase(resposta)== 's') {
