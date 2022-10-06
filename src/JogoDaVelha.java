@@ -4,7 +4,7 @@ import java.lang.Character;
 public class JogoDaVelha {
     public static void main(String[] args) {
         char[] simbolos = {'X', 'O'};
-        int posicao = 0;
+        int posicao;
         int[] pontos = {0, 0};
         boolean ganhou = false;
         String tab = Tabuleiro.tabuleiro();
@@ -41,48 +41,23 @@ public class JogoDaVelha {
 
                     if (ganhou) {
                         pontos = Ganhou.placar(ganhou, jogadores, pontos, i);
-                        System.out.println("Quer jogar outra partida? s/n");
-                        char resposta = leitor.next().charAt(0);
-                        if (Character.toLowerCase(resposta)== 's')
+                            if(Jogador.simNao(leitor, jogadores, simbolos)) {
+                                tab = Tabuleiro.tabuleiro();
+                                n = 0;
+                                ganhou =  false;
+                            } else break;
 
-                        {
-                        System.out.println("|---------------Iniciando outra partida----------------|" );
-
-                        Jogador.mostraJogardores(jogadores, simbolos);
+                    }
+                if (n == 10 && i == 0){
+                    System.out.println(tab);
+                    System.out.println("Deu velhaa!!");
+                    if(Jogador.simNao(leitor, jogadores, simbolos)) {
                         tab = Tabuleiro.tabuleiro();
                         n = 0;
-                        ganhou = false;
-                        break;
+                        ganhou =  false;
+                    } else break;
 
-                        }
-                        else if (Character.toLowerCase(resposta)== 'n')
-                        {
-                            System.out.println("|---------------Encerrando Jogo--------------|");
-                            break;
-                        }
-
-                    }
-                    if (n == 10) {
-                        System.out.println(tab);
-                        System.out.println("Deu velhaa!!");
-                        Ganhou.placar(ganhou, jogadores, pontos, i);
-                        System.out.println("Quer jogar outra partida? s/n");
-                        char resposta = leitor.next().charAt(0);
-                        if (Character.toLowerCase(resposta)== 's') {
-                            Jogador.mostraJogardores(jogadores, simbolos);
-                            tab = Tabuleiro.tabuleiro();
-
-                            System.out.println("|---------------Iniciando outra partida--------------|");
-                            n = 0;
-
-                        } else if (Character.toLowerCase(resposta)== 'n') {
-
-                            System.out.println("|---------------Encerrando Jogo--------------|");
-                            break;
-
-                        }
-                        break;
-                    }
+                }
                 System.out.println(tab);
 
             }
@@ -95,6 +70,7 @@ public class JogoDaVelha {
         System.out.println("|-----------------------------------------------------|");
 
     }
+
 
 
 }

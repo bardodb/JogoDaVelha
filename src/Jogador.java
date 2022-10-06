@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import static java.lang.Character.toLowerCase;
+
 
 public class Jogador {
 
@@ -15,10 +17,13 @@ public class Jogador {
 
     public static int getJogadas(Scanner sc) {
             System.out.println("Digite a posição: ");
-            if (sc.hasNextInt()) {
+            int posicao = sc.nextInt();
+            if (posicao <= 9) {
                 return sc.nextInt();
-            }
-            else {
+            } else if (posicao >= 10) {
+                System.out.println("posição, não valida/inexistente, tente uma de 1 a 9");
+                return getJogadas(sc);
+            } else {
                 System.out.println("somente números são aceitos");
                 sc.next();
                 return getJogadas(sc);
@@ -36,6 +41,22 @@ public class Jogador {
         }
 
 
+    }
+    public static boolean simNao(Scanner leitor, String[] jogadores, char[] simbolos){
+        System.out.println("Quer jogar outra partida? s/n");
+        char resposta = leitor.next().charAt(0);
+        resposta = toLowerCase(resposta);
+        if (resposta == 's') {
+            Jogador.mostraJogardores(jogadores, simbolos);
+            System.out.println("|---------------Iniciando outra partida--------------|");
+            return true;
+        } else if (resposta == 'n') {
+            System.out.println("|---------------Encerrando Jogo--------------|");
+            return false;
+        } else {
+            System.out.println("Não entendi, apenas digite 's' para jogar outra rodada, ou 'n' para finalizar!");
+            return simNao(leitor, jogadores, simbolos);
+        }
     }
 
 }
