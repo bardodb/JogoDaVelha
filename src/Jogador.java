@@ -1,9 +1,11 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.function.ToIntFunction;
+
 import static java.lang.Character.toLowerCase;
 
 
 public class Jogador {
-    private static String tab;
 
     public static String[] getJogador(Scanner leitor, String tab){
         System.out.println("Digite o nome do jogador 1: ");
@@ -16,17 +18,20 @@ public class Jogador {
         return lista;
     }
 
-    public static int getJogadas(Scanner sc, String tab) {
+    public static Integer getJogadas(Scanner sc) {
+        try {
 
-        Jogador.tab = tab;
-        System.out.println("Digite a posição: ");
-        if (sc.hasNextInt()) {
-            return sc.nextInt();
-        }
-        else {
-            System.out.println("Digite um número");
-            sc.next();
-            return getJogadas(sc, tab);
+            System.out.printf("Digite a posição: ");
+            String posicao = sc.next();
+            if (Integer.parseInt(posicao) <= 9) {
+                return Integer.parseInt(posicao);
+            } else if (Integer.parseInt(posicao) >= 10) {
+                System.out.println("posição, não valida/inexistente, tente uma de 1 a 9");
+                return getJogadas(sc);
+            } else return getJogadas(sc);
+        }catch (NumberFormatException e) {
+            System.out.println("somente números são aceitos");
+            return getJogadas(sc);
         }
 
     }
@@ -60,3 +65,4 @@ public class Jogador {
     }
 
 }
+

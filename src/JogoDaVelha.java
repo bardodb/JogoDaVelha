@@ -23,7 +23,7 @@ public class JogoDaVelha {
                 String jogador = jogadores[i];
                 char simbolo = simbolos[i];
                 System.out.println("Vez da " + jogador);
-                posicao = Jogador.getJogadas(leitor, tab);
+                posicao = Jogador.getJogadas(leitor);
                 arrayTab = Tabuleiro.tabToArray(tab);
 
 
@@ -36,7 +36,7 @@ public class JogoDaVelha {
                 j = posicao -1;
                 while (arrayTab[j] == 'X' || arrayTab[j] == 'O') {
                     System.out.println("Posição já selecionada, tente outra");
-                    posicao = Jogador.getJogadas(leitor, tab);
+                    posicao = Jogador.getJogadas(leitor);
                     j = posicao -1;
                 }
 
