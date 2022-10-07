@@ -3,6 +3,7 @@ import static java.lang.Character.toLowerCase;
 
 
 public class Jogador {
+    private static String tab;
 
     public static String[] getJogador(Scanner leitor, String tab){
         System.out.println("Digite o nome do jogador 1: ");
@@ -15,19 +16,18 @@ public class Jogador {
         return lista;
     }
 
-    public static int getJogadas(Scanner sc) {
-            System.out.println("Digite a posição: ");
-            int posicao = sc.nextInt();
-            if (posicao <= 9) {
-                return sc.nextInt();
-            } else if (posicao >= 10) {
-                System.out.println("posição, não valida/inexistente, tente uma de 1 a 9");
-                return getJogadas(sc);
-            } else {
-                System.out.println("somente números são aceitos");
-                sc.next();
-                return getJogadas(sc);
-            }
+    public static int getJogadas(Scanner sc, String tab) {
+
+        Jogador.tab = tab;
+        System.out.println("Digite a posição: ");
+        if (sc.hasNextInt()) {
+            return sc.nextInt();
+        }
+        else {
+            System.out.println("Digite um número");
+            sc.next();
+            return getJogadas(sc, tab);
+        }
 
     }
 
@@ -60,4 +60,3 @@ public class Jogador {
     }
 
 }
-

@@ -40,9 +40,9 @@ public class Tabuleiro {
                 break;
             case 9: tab = tab.replace('9', jogador);
                 break;
-            default: Exception e = new Exception("Posição inválida");
-                System.out.println(e.getMessage());
-
+            case 0: break;
+            default:
+                System.out.println("posição não existe");
         }
         return tab;
     }
@@ -50,6 +50,7 @@ public class Tabuleiro {
     public static char[] tabToArray(String tab){
         char[] tabuleiro = tab.toCharArray();
         return new char[]{tabuleiro[21], tabuleiro[27],tabuleiro[33], tabuleiro[78], tabuleiro[84], tabuleiro[90], tabuleiro[135], tabuleiro[141], tabuleiro[147]};
+        
     }
 
 }
