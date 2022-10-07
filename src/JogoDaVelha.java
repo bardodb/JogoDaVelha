@@ -34,7 +34,7 @@ public class JogoDaVelha {
                 }
 
                 j = posicao -1;
-                while (arrayTab[j] == 'X' || arrayTab[j] == 'O') {
+                while (arrayTab[j] == 'X' || arrayTab[j] == 'O' || posicao == 0) {
                     System.out.println("Posição já selecionada, tente outra");
                     posicao = Jogador.getJogadas(leitor);
                     j = posicao -1;

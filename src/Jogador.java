@@ -20,20 +20,26 @@ public class Jogador {
 
     public static Integer getJogadas(Scanner sc) {
         try {
-
             System.out.printf("Digite a posição: ");
             String posicao = sc.next();
-            if (Integer.parseInt(posicao) <= 9) {
-                return Integer.parseInt(posicao);
-            } else if (Integer.parseInt(posicao) >= 10) {
-                System.out.println("posição, não valida/inexistente, tente uma de 1 a 9");
+            if (posicao.equals("0") || posicao.contains("-")){
+                System.out.println("posição invalida, tente novamente com um número de 1 a 9");
                 return getJogadas(sc);
-            } else return getJogadas(sc);
+            } else {
+                if (Integer.parseInt(posicao) <= 9) {
+                    return Integer.parseInt(posicao);
+                } else if (Integer.parseInt(posicao) >= 10 || Integer.parseInt(posicao) < 1) {
+                    System.out.println("posição, não valida/inexistente, tente uma de 1 a 9");
+                    return getJogadas(sc);
+                } else {
+                    System.out.println("posição, não valida/inexistente, tente uma de 1 a 9");
+                    return getJogadas(sc);
+                }
+        }
         }catch (NumberFormatException e) {
             System.out.println("somente números são aceitos");
             return getJogadas(sc);
         }
-
     }
 
 
